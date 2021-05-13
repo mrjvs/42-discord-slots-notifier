@@ -2,7 +2,9 @@ const fs = require("fs");
 const path = require("path");
 
 let notifs = [];
+
 function save() {
+    // TODO encrypt cookie data, we dont want no data leaks
     fs.writeFileSync(path.join(__dirname, "../db/data.json"), JSON.stringify({
         notifs: notifs,
     }));
@@ -14,6 +16,7 @@ function load() {
     notifs = parsedData.notifs;
 }
 
+// setup
 if (!fs.existsSync(path.join(__dirname, "../db/data.json"))) {
     if (!fs.existsSync(path.join(__dirname, "../db")))
         fs.mkdirSync(path.join(__dirname, "../db"));
@@ -22,8 +25,6 @@ if (!fs.existsSync(path.join(__dirname, "../db/data.json"))) {
     load();
 }
 
-
-// TODO permanent storage
 async function addNotif(userId, project, teamId, authCookie) {
     if (notifs.find(v=>v.teamId === teamId && v.user === userId && v.project === project))
         return "alreadyExists";
