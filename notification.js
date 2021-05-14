@@ -40,7 +40,7 @@ async function runFetch(notif) {
 
 function init(client) {
     // run every 5 minutes
-    cron.schedule('*/10 * * * * *', async () => {
+    cron.schedule('*/5 * * * *', async () => {
         const notifs = getAllNotifs();
         for (let notif of notifs) {
             try {

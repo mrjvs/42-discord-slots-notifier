@@ -27,7 +27,7 @@ module.exports = {
                 const createResult = await addNotif(testNotif.user, testNotif.project, testNotif.teamId, testNotif.authCookie);
                 if (createResult === "alreadyExists")
                     return await sendError(message.author, "Notification for that project already exists");
-                return await sendMessage(message.author, "Success", "Notification has been added", ["Disclaimer", "This bot uses **your** account to check for slots. We are not responsible for any consequences that may be brought to you or your intra account."]);
+                return await sendMessage(message.author, "Success", "Notification has been added", [["Disclaimer", "This bot uses **your** account to check for slots. We are not responsible for any consequences that may be brought to you or your intra account."]]);
             case "list":
                 const notifications = getNotifUser(message.author.id);
                 if (notifications.length == 0)
