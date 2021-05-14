@@ -29,7 +29,6 @@ async function addNotif(userId, project, teamId, authCookie) {
     if (notifs.find(v=>v.teamId === teamId && v.user === userId && v.project === project))
         return "alreadyExists";
     notifs.push({
-        id: "123",
         user: userId,
         authCookie,
         project,
